@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aquintar - Custom Cafe Hydration</title>
+    
+    <!-- Security: CSP (Updated to allow connection to localhost:3000) -->
+    <meta http-equiv="Content-Security-Policy" content="
+        default-src 'self'; 
+        script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://unpkg.com; 
+        style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; 
+        font-src 'self' https://fonts.gstatic.com; 
+        img-src 'self' https://images.unsplash.com data:; 
+        connect-src 'self' http://localhost:3000;
+    ">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons (Lucide) -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: '#000080',
+                        beige: '#F5F5DC',
+                        gold: '#E0C58F',
+                        tan: '#E0B58F',
+                    },
+                    fontFamily: {
+                        sans: ['Montserrat', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body { background-color: #F5F5DC; color: #000080; }
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+    </style>
+</head>
+<body class="overflow-x-hidden font-sans antialiased">
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 py-4 px-6 lg:px-12 bg-navy text-beige shadow-lg">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <a href="#" class="text-2xl font-serif font-bold tracking-wider text-gold flex items-center gap-2">
+                <i data-lucide="droplet" class="w-8 h-8 fill-gold text-navy"></i>
+                AQUINTAR
+            </a>
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center gap-8">
+                <a href="#home" class="hover:text-gold transition-colors text-sm uppercase tracking-widest font-medium">Home</a>
+                <a href="#about" class="hover:text-gold transition-colors text-sm uppercase tracking-widest font-medium">Concept</a>
+                <a href="#process" class="hover:text-gold transition-colors text-sm uppercase tracking-widest font-medium">How it Works</a>
+                <a href="#reviews" class="hover:text-gold transition-colors text-sm uppercase tracking-widest font-medium">Reviews</a>
+                <a href="#contact" class="px-6 py-2 border border-gold text-gold hover:bg-gold hover:text-navy transition-all duration-300 rounded-full text-sm font-bold uppercase">Partner With Us</a>
+            </div>
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="md:hidden text-gold"><i data-lucide="menu" class="w-8 h-8"></i></button>
+        </div>
+        <!-- Mobile Menu Overlay -->
+        <div id="mobile-menu" class="absolute top-full left-0 w-full bg-navy border-t border-white/10 hidden flex-col p-6 shadow-xl md:hidden">
+            <a href="#home" class="py-3 text-beige hover:text-gold border-b border-white/10 block">Home</a>
+            <a href="#about" class="py-3 text-beige hover:text-gold border-b border-white/10 block">Concept</a>
+            <a href="#process" class="py-3 text-beige hover:text-gold border-b border-white/10 block">How it Works</a>
+            <a href="#reviews" class="py-3 text-beige hover:text-gold border-b border-white/10 block">Reviews</a>
+            <a href="#contact" class="mt-4 block text-center bg-gold text-navy py-3 rounded font-bold">Partner With Us</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
+        <div class="absolute top-0 right-0 w-2/3 h-full bg-tan opacity-20 rounded-l-full translate-x-1/3 blur-3xl"></div>
+        <div class="absolute bottom-0 left-0 w-1/2 h-1/2 bg-navy opacity-10 rounded-r-full -translate-x-1/4 blur-3xl"></div>
+        <div class="container mx-auto px-6 relative z-10 grid md:grid-cols-2 gap-12 items-center">
+            <div class="reveal">
+                <span class="text-navy font-bold tracking-[0.2em] uppercase text-sm mb-4 block border-l-4 border-gold pl-4">Premium Cafe Branding</span>
+                <h1 class="text-5xl md:text-7xl font-serif font-bold text-navy mb-6 leading-tight">
+                    Don't Serve <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-navy to-tan">Just Water.</span>
+                </h1>
+                <p class="text-gray-600 text-lg mb-8 max-w-lg leading-relaxed">
+                    Serve your brand. We replace generic market bottles with custom-labeled water bottles that act as walking advertisements for your cafe.
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="#contact" class="px-8 py-4 bg-navy text-beige font-bold rounded shadow-lg hover:bg-gold hover:text-navy transition-all duration-300 transform hover:scale-105 flex items-center gap-2">Get Your Prototype <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+                    <a href="#about" class="px-8 py-4 border-2 border-navy text-navy font-bold rounded hover:bg-navy hover:text-beige transition-all duration-300">Learn More</a>
+                </div>
+            </div>
+            <div class="relative reveal delay-200 hidden md:block">
+                <div class="w-full aspect-square rounded-full border border-gold p-4 relative">
+                    <div class="w-full h-full rounded-full bg-tan overflow-hidden relative shadow-2xl">
+                         <img src="https://images.unsplash.com/photo-1559925393-8be0ec4767c8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Cafe Table" class="w-full h-full object-cover opacity-90">
+                         <div class="absolute inset-0 bg-navy/10"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Concept Section -->
+    <section id="about" class="py-24 bg-beige relative">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div class="order-2 md:order-1 reveal">
+                    <img src="https://images.unsplash.com/photo-1602143407151-11115cd4e69b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Water Bottle Mockup" class="rounded-lg shadow-lg w-full h-80 object-cover border-4 border-white">
+                </div>
+                <div class="order-1 md:order-2 reveal">
+                    <h2 class="text-sm font-bold text-gold uppercase tracking-widest mb-2">The Concept</h2>
+                    <h3 class="text-4xl font-serif font-bold text-navy mb-6">Why Advertise Others?</h3>
+                    <p class="text-gray-700 leading-relaxed mb-6">
+                        When you serve a generic water bottle, you are advertising *their* brand on *your* table. Aquintar changes that. We provide custom-labeled bottles that carry your cafe's logo.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section id="process" class="py-24 bg-navy text-beige relative overflow-hidden">
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="mb-16 reveal">
+                <h2 class="text-4xl font-serif font-bold text-gold mb-4">How It Works</h2>
+                <p class="text-tan max-w-xl">Getting your custom bottles is simple. We handle the design and logistics.</p>
+            </div>
+
+            <div class="space-y-8 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-gold before:to-transparent">
+                
+                <!-- Step 1 -->
+                <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active reveal">
+                    <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-navy bg-gold shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
+                        <span class="text-navy font-bold">1</span>
+                    </div>
+                    <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white/5 p-6 rounded border border-white/10 hover:border-gold transition-colors duration-300">
+                        <h3 class="font-bold text-gold text-lg mb-2">Consultation & Design</h3>
+                        <p class="text-sm text-gray-300">Share your logo and cafe vibe. Our designers create a digital mockup of your bottle label.</p>
+                    </div>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group reveal">
+                    <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-navy bg-tan shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
+                        <span class="text-navy font-bold">2</span>
+                    </div>
+                    <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white/5 p-6 rounded border border-white/10 hover:border-gold transition-colors duration-300">
+                        <h3 class="font-bold text-gold text-lg mb-2">Sample Approval</h3>
+                        <p class="text-sm text-gray-300">We produce a physical sample for you to hold, see, and approve before bulk production.</p>
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group reveal">
+                    <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-navy bg-gold shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
+                        <span class="text-navy font-bold">3</span>
+                    </div>
+                    <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white/5 p-6 rounded border border-white/10 hover:border-gold transition-colors duration-300">
+                        <h3 class="font-bold text-gold text-lg mb-2">Delivery & Re-stock</h3>
+                        <p class="text-sm text-gray-300">We deliver your first batch. When you run low, a simple message gets you a restock.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Reviews Section -->
+    <section id="reviews" class="py-24 bg-beige border-b border-tan/20">
+        <div class="container mx-auto px-6">
+            <div class="flex justify-between items-end mb-16 reveal">
+                <div>
+                    <h2 class="text-sm font-bold text-gold uppercase tracking-widest mb-2">Feedback</h2>
+                    <h3 class="text-3xl font-serif font-bold text-navy">Partner Reviews</h3>
+                </div>
+                <button onclick="document.getElementById('reviewFormContainer').classList.remove('hidden')" class="px-6 py-2 bg-navy text-gold text-sm font-bold uppercase rounded hover:bg-gold hover:text-navy transition-colors shadow-lg">
+                    Write a Review
+                </button>
+            </div>
+
+            <!-- Review Form (Hidden by Default) -->
+            <div id="reviewFormContainer" class="hidden fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
+                <div class="bg-white p-8 rounded-xl shadow-2xl max-w-md w-full relative">
+                    <button onclick="document.getElementById('reviewFormContainer').classList.add('hidden')" class="absolute top-4 right-4 text-gray-400 hover:text-navy"><i data-lucide="x" class="w-6 h-6"></i></button>
+                    <h4 class="text-2xl font-serif font-bold text-navy mb-4">Share Your Experience</h4>
+                    <form id="reviewForm" onsubmit="submitReview(event)">
+                        <div class="mb-4">
+                            <label class="block text-xs font-bold text-navy uppercase mb-1">Your Name</label>
+                            <input type="text" id="r_name" required class="w-full bg-beige p-2 rounded outline-none border border-transparent focus:border-gold">
+                        </div>
+                        <div class="mb-4">
+                            <label class="block text-xs font-bold text-navy uppercase mb-1">Role (e.g., Cafe Owner)</label>
+                            <input type="text" id="r_role" required class="w-full bg-beige p-2 rounded outline-none border border-transparent focus:border-gold">
+                        </div>
+                        <div class="mb-4">
+                            <label class="block text-xs font-bold text-navy uppercase mb-1">Rating</label>
+                            <select id="r_rating" class="w-full bg-beige p-2 rounded outline-none">
+                                <option value="5">★★★★★ (5 Stars)</option>
+                                <option value="4">★★★★☆ (4 Stars)</option>
+                                <option value="3">★★★☆☆ (3 Stars)</option>
+                            </select>
+                        </div>
+                        <div class="mb-6">
+                            <label class="block text-xs font-bold text-navy uppercase mb-1">Review</label>
+                            <textarea id="r_comment" required maxlength="200" class="w-full bg-beige p-2 rounded h-24 outline-none border border-transparent focus:border-gold"></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-gold text-navy font-bold py-3 rounded hover:bg-navy hover:text-gold transition-colors">Submit Review</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Reviews Grid (Populated by JS) -->
+            <div id="reviewsGrid" class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <!-- Fallback Loading Content -->
+                <div class="col-span-2 text-center text-gray-500 py-8">Loading reviews...</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 bg-white relative">
+        <div class="container mx-auto px-6 max-w-4xl">
+            <div class="bg-white rounded-2xl shadow-2xl overflow-hidden reveal border border-tan/20">
+                <div class="grid md:grid-cols-2">
+                    <div class="bg-navy p-10 text-beige flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-3xl font-serif font-bold mb-6 text-gold">Let's Collaborate</h3>
+                            <div class="space-y-6">
+                                <div class="flex items-start gap-4">
+                                    <i data-lucide="map-pin" class="text-gold mt-1"></i>
+                                    <div><h5 class="font-bold text-white">Location</h5><p class="text-sm">Pune, Maharashtra</p></div>
+                                </div>
+                                <div class="flex items-start gap-4">
+                                    <i data-lucide="mail" class="text-gold mt-1"></i>
+                                    <div><h5 class="font-bold text-white">Email</h5><p class="text-sm">partners@aquintar.com</p></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="p-10">
+                        <form id="contactForm" onsubmit="handleFormSubmit(event)">
+                            <div class="mb-6"><input type="text" id="name" required class="w-full bg-beige border-none p-3 rounded" placeholder="Cafe Name"></div>
+                            <div class="mb-6"><input type="email" id="email" required class="w-full bg-beige border-none p-3 rounded" placeholder="Email"></div>
+                            <div class="mb-6"><textarea id="message" required class="w-full bg-beige border-none p-3 rounded h-32" placeholder="Inquiry..."></textarea></div>
+                            <button type="submit" id="submitBtn" class="w-full bg-gold text-navy font-bold py-4 rounded hover:bg-navy hover:text-gold transition-colors">Request Samples</button>
+                            <p id="formStatus" class="mt-4 text-center text-sm font-medium hidden"></p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-navy text-beige py-12 border-t border-white/10">
+        <div class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+            <p class="text-sm opacity-60">© 2026 Aquintar. All rights reserved.</p>
+            <div class="flex gap-8 text-sm font-medium">
+                <!-- UPDATED LINKS -->
+                <a href="privacy.html" class="hover:text-gold transition-colors">Privacy Policy</a>
+                <a href="terms.html" class="hover:text-gold transition-colors">Terms & Conditions</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+
+        // Navbar Scroll
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) navbar.classList.add('shadow-xl', 'py-2');
+            else navbar.classList.remove('shadow-xl', 'py-2');
+        });
+
+        // Mobile Menu
+        document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+            document.getElementById('mobile-menu').classList.toggle('flex');
+        });
+
+        // Animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) entry.target.classList.add('active');
+            });
+        });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // --- BACKEND INTEGRATION ---
+
+        // 1. Fetch and Display Reviews
+        async function fetchReviews() {
+            try {
+                const res = await fetch('http://localhost:3000/api/reviews');
+                const json = await res.json();
+                const container = document.getElementById('reviewsGrid');
+                
+                if (json.data && json.data.length > 0) {
+                    container.innerHTML = json.data.map(r => `
+                        <div class="bg-white p-8 rounded-xl shadow-sm border border-transparent hover:border-gold transition-all">
+                            <div class="flex gap-1 text-gold mb-4">
+                                ${'<i data-lucide="star" class="w-4 h-4 fill-current"></i>'.repeat(r.rating)}
+                            </div>
+                            <p class="text-gray-700 italic mb-6">"${r.comment}"</p>
+                            <div class="flex items-center gap-4">
+                                <div class="w-10 h-10 bg-navy rounded-full flex items-center justify-center text-gold font-bold">${r.name.substring(0,2).toUpperCase()}</div>
+                                <div>
+                                    <p class="text-navy font-bold text-sm">${r.name}</p>
+                                    <p class="text-gray-500 text-xs uppercase">${r.role}</p>
+                                </div>
+                            </div>
+                        </div>
+                    `).join('');
+                    lucide.createIcons();
+                } else {
+                    container.innerHTML = '<p class="col-span-2 text-center text-gray-500">No reviews yet. Be the first!</p>';
+                }
+            } catch (e) {
+                console.log("Backend offline, using fallback UI");
+                document.getElementById('reviewsGrid').innerHTML = '<p class="col-span-2 text-center text-gray-500">Connect backend to see reviews.</p>';
+            }
+        }
+        
+        // Load reviews on start
+        fetchReviews();
+
+        // 2. Submit Review
+        async function submitReview(e) {
+            e.preventDefault();
+            const data = {
+                name: document.getElementById('r_name').value,
+                role: document.getElementById('r_role').value,
+                rating: document.getElementById('r_rating').value,
+                comment: document.getElementById('r_comment').value
+            };
+
+            try {
+                const res = await fetch('http://localhost:3000/api/reviews', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify(data)
+                });
+                if(res.ok) {
+                    alert("Review Submitted!");
+                    document.getElementById('reviewFormContainer').classList.add('hidden');
+                    document.getElementById('reviewForm').reset();
+                    fetchReviews(); // Refresh list
+                }
+            } catch(e) {
+                alert("Error submitting review. Is the server running?");
+            }
+        }
+
+        // 3. Contact Form
+        async function handleFormSubmit(event) {
+            event.preventDefault();
+            const btn = document.getElementById('submitBtn');
+            const status = document.getElementById('formStatus');
+            btn.disabled = true;
+            btn.textContent = "Sending...";
+
+            try {
+                const res = await fetch('http://localhost:3000/api/contact', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({
+                        name: document.getElementById('name').value,
+                        email: document.getElementById('email').value,
+                        message: document.getElementById('message').value
+                    })
+                });
+                
+                if (res.ok) {
+                    status.textContent = "Success! We'll be in touch.";
+                    status.className = "mt-4 text-center text-sm font-medium text-green-600 block";
+                    document.getElementById('contactForm').reset();
+                } else {
+                    throw new Error("Failed");
+                }
+            } catch (error) {
+                status.textContent = "Error sending message. Is backend running?";
+                status.className = "mt-4 text-center text-sm font-medium text-red-600 block";
+            } finally {
+                btn.disabled = false;
+                btn.textContent = "Request Samples";
+            }
+        }
+    </script>
+</body>
+</html>
